@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./pages/Layout";
+import HomePage from "./pages/HomePage";
+import BookShow from "./pages/BookShow";
+import MyContext from "./MyContext";
+import { useState } from "react";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+const [books,setBooks]=useState([]);
+
+const addBooks = ({title,author})=>{
+  setBooks([...books,{ title: title, author: author }]);
+};
+
+
+return (
+<div>
+      <MyContext.Provider value={{ books, addBooks }}>
+        <BrowserRouter>
+          <Routes>
+            <Route index element={<Layout />} />
+            <Route path="showbooks" element={<BookShow />} />
+            <Route path="addbooks" element={<HomePage />} />
+          </Routes>
+        </BrowserRouter>
+      </MyContext.Provider>
     </div>
   );
 }
-
 export default App;
