@@ -5,18 +5,13 @@ import BookShow from "./pages/BookShow";
 import MyContext from "./MyContext";
 import { useState } from "react";
 
-
 function App() {
-
-const [books,setBooks]=useState([]);
-
-const addBooks = ({title,author})=>{
-  setBooks([...books,{ title: title, author: author }]);
-};
-
-
-return (
-<div>
+  const [books, setBooks] = useState([]);
+  const addBooks = ({ title, author }) => {
+    setBooks([...books, { title: title, author: author }]);
+  };
+  return (
+    <div>
       <MyContext.Provider value={{ books, addBooks }}>
         <BrowserRouter>
           <Routes>
