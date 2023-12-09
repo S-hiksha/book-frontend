@@ -1,10 +1,11 @@
 //import { useContext } from "react";
 //import MyContext from "../MyContext";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 function BookShow() {
   //const { books } = useContext(MyContext);
   const [books, setBooks] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     async function getBooks() {
       try {
@@ -19,7 +20,7 @@ function BookShow() {
   }, []);
 
   const handleUpdate = (id) => {
-    console.log('Update')
+   navigate(`/updatebook/${id}`);
   }
 
   const handleDelete = async (id) => {

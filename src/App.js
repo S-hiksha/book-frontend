@@ -4,7 +4,7 @@ import HomePage from "./pages/HomePage";
 import BookShow from "./pages/BookShow";
 import MyContext from "./MyContext";
 import { useState } from "react";
-
+import UpdateBook from "./pages/updateFile";
 function App() {
   const [books, setBooks] = useState([]);
   const addBooks = ({ title, author }) => {
@@ -18,6 +18,7 @@ function App() {
             <Route index element={<Layout />} />
             <Route path="showbooks" element={<BookShow />} />
             <Route path="addbooks" element={<HomePage />} />
+            <Route path="/updatebook/:id" element={< UpdateBook/>} />
           </Routes>
         </BrowserRouter>
       </MyContext.Provider>
